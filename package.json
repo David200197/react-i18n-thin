@@ -1,0 +1,36 @@
+{
+  "name": "react-i18n-thin",
+  "version": "1.0.0",
+  "description": "Lightweight version of i18n for react",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "test": "vitest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/David200197/react-i18n-thin.git"
+  },
+  "keywords": [
+    "i18n",
+    "react"
+  ],
+  "author": "David200197",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/David200197/react-i18n-thin/issues"
+  },
+  "homepage": "https://github.com/David200197/react-i18n-thin#readme",
+  "dependencies": {
+    "react": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.3",
+    "@vitejs/plugin-react": "^4.3.4",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.7",
+    "vitest": "^2.1.8"
+  }
+}
