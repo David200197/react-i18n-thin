@@ -1,6 +1,6 @@
 import React from "react";
 import { test, describe, expect } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import { I18nProvider } from "../src/providers/i18n-provider";
 import { useTranslation } from "../src/hooks/use-translation";
 
@@ -34,5 +34,24 @@ describe("I18n Test", () => {
     );
 
     expect(screen).toBeDefined();
+  });
+  test("should be change the language", () => {
+    render(
+      <I18nProvider defaultLanguage="en" translations={{ en, es }}>
+        <TestBed />
+      </I18nProvider>
+    );
+    expect(screen.getByText("example")).toBeDefined();
+    expect(screen.getByText("en")).toBeDefined();
+
+    const changeToSpanishButton = screen.getByText("change to spanish");
+    fireEvent.click(changeToSpanishButton);
+    expect(screen.getByText("ejemplo")).toBeDefined();
+    expect(screen.getByText("es")).toBeDefined();
+
+    const changeToEnglishButton = screen.getByText("change to english");
+    fireEvent.click(changeToEnglishButton);
+    expect(screen.getByText("example")).toBeDefined();
+    expect(screen.getByText("en")).toBeDefined();
   });
 });
