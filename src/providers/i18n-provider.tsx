@@ -3,6 +3,7 @@ import { Translation } from "../interfaces/translation";
 import { setStoredLanguage } from "../utils/set-stored-language";
 import { I18nContext } from "../context/i18n-context";
 import { getLanguage } from "../utils/get-language";
+import { Translator } from "../interfaces/translator";
 
 type Props = {
   defaultLanguage: string;
