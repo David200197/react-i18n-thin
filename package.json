@@ -1,6 +1,6 @@
 {
   "name": "react-i18n-thin",
-  "private": true,
+  "private": false,
   "version": "1.0.1",
   "description": "Lightweight version of i18n for react",
   "type": "module",
