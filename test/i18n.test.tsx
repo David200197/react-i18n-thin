@@ -43,6 +43,45 @@ describe("I18n Test", () => {
     expect(renderWithError).toThrowError("Default language not found: en");
   });
 
+  test(`The config language cannot be string value`, () => {
+    const renderWithError = () => {
+      render(
+        <I18nProvider defaultLanguage="en" translations={{ en: "en" }}>
+          <TestBed />
+        </I18nProvider>
+      );
+    };
+    expect(renderWithError).toThrowError(
+      "The config language cannot be string, boolean or string value"
+    );
+  });
+
+  test(`The config language cannot be number value`, () => {
+    const renderWithError = () => {
+      render(
+        <I18nProvider defaultLanguage="en" translations={{ en: 1 }}>
+          <TestBed />
+        </I18nProvider>
+      );
+    };
+    expect(renderWithError).toThrowError(
+      "The config language cannot be string, boolean or string value"
+    );
+  });
+
+  test(`The config language cannot be boolean value`, () => {
+    const renderWithError = () => {
+      render(
+        <I18nProvider defaultLanguage="en" translations={{ en: true }}>
+          <TestBed />
+        </I18nProvider>
+      );
+    };
+    expect(renderWithError).toThrowError(
+      "The config language cannot be string, boolean or string value"
+    );
+  });
+
   test(`The key provided is incorrect"`, () => {
     const renderWithError = () => {
       render(
@@ -80,7 +119,7 @@ describe("I18n Test", () => {
   });
 
   test(`should be throw "You can't switch to an unconfigured language"`, async () => {
-    const throwError = (error) =>
+    const throwError = (error: Error) =>
       expect(error.message).toBe(
         "You can't switch to an unconfigured language: it"
       );

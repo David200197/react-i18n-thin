@@ -35,12 +35,25 @@ export const I18nProvider = ({
   const t: Translator = useCallback(
     (key, variables) => {
       const keys = key.toString().split(".");
-      let value = translations[language];
-      for (const currentKey of keys) {
-        if (!value || !isDefined(value[currentKey]))
-          throw new Error(`The key provided "${keys}" is incorrect`);
-        value = value[currentKey];
+      let value: any = translations[language];
+
+      if (
+        typeof value === "number" ||
+        typeof value === "boolean" ||
+        typeof value === "string"
+      ) {
+        throw new Error(
+          `The config language cannot be string, boolean or string value`
+        );
       }
+
+      for (const currentKey of keys) {
+        const currentValue = value[currentKey];
+        if (!value || !isDefined(currentValue))
+          throw new Error(`The key provided "${keys}" is incorrect`);
+        value = currentValue;
+      }
+
       if (typeof value === "number") return value.toString();
       if (typeof value === "boolean") return String(value);
       if (typeof value !== "string") {

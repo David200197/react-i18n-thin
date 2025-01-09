@@ -2,9 +2,10 @@
   "name": "react-i18n-thin",
   "version": "0.0.1",
   "description": "Lightweight version of i18n for react",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc && vite build",
+    "build": "tsc",
     "test": "vitest run",
     "test:watch": "vitest watch"
   },

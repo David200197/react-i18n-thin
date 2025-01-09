@@ -8,7 +8,7 @@ export const TestBed = ({ throwError }: Props) => {
   const dispatchError = () => {
     try {
       changeLanguage("it");
-    } catch (error) {
+    } catch (error: any) {
       throwError?.(error);
     }
   };
