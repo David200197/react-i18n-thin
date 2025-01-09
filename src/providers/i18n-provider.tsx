@@ -4,6 +4,7 @@ import { setStoredLanguage } from "../utils/set-stored-language";
 import { I18nContext } from "../context/i18n-context";
 import { getLanguage } from "../utils/get-language";
 import { Translator } from "../interfaces/translator";
+import { isDefined } from "../utils/is-not-defined";
 
 type Props = {
   defaultLanguage: string;
@@ -22,7 +23,9 @@ export const I18nProvider = ({
   const changeLanguage = useCallback(
     (lang: string) => {
       if (!translations[lang])
-        throw new Error(`You can't switch to an unconfigured language`);
+        throw new Error(
+          `You can't switch to an unconfigured language: ${lang}`
+        );
       setLanguage(lang);
       setStoredLanguage(lang);
     },
@@ -34,14 +37,16 @@ export const I18nProvider = ({
       const keys = key.toString().split(".");
       let value = translations[language];
       for (const currentKey of keys) {
-        if (!value || !value[key])
-          throw new Error("The key provided is incorrect");
+        if (!value || !isDefined(value[currentKey]))
+          throw new Error(`The key provided "${keys}" is incorrect`);
         value = value[currentKey];
       }
       if (typeof value === "number") return value.toString();
       if (typeof value === "boolean") return String(value);
       if (typeof value !== "string") {
-        throw new Error("The value of a key cannot be an object or array");
+        throw new Error(
+          `The value of a key "${keys}" cannot be an object or array`
+        );
       }
       if (!variables) return value;
       for (const key in variables) {

@@ -5,9 +5,12 @@ const getStoredLanguage = () => localStorage.getItem(LANGUAGE_KEY);
 
 const getBrowserLanguage = () => navigator.language.split("-")[0];
 
-export const getLanguage = (translations: Translation, defaultLanguage: string) => {
+export const getLanguage = (
+  translations: Translation,
+  defaultLanguage: string
+) => {
   if (!translations[defaultLanguage])
-    throw new Error("Default language not found");
+    throw new Error(`Default language not found: ${defaultLanguage}`);
   const storedLang = getStoredLanguage();
   const browserLang = getBrowserLanguage();
 
