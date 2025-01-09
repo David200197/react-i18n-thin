@@ -1,6 +1,6 @@
 # React-I18n-Thin
 
-`react-i18n-thin` is a lightweight internationalization library for React applications. It provides a simple API to manage translations and locale settings.
+`react-i18n-thin` is a lightweight internationalization library for React applications. It provides a simple API to manage translations and locale settings. Load the default language prioritizing local storage or browser settings
 
 ## Installation
 
