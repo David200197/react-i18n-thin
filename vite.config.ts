@@ -9,7 +9,7 @@ const config = defineConfig({
   plugins: [
     react(),
     tsconfigPaths(),
-    dts({ tsconfigPath: "./tsconfig.app.json" }),
+    dts({ tsconfigPath: "./tsconfig.app.json", insertTypesEntry: true }),
   ],
   build: {
     lib: {
