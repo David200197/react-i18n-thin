@@ -1,6 +1,6 @@
 {
   "name": "react-i18n-thin",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Lightweight version of i18n for react",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
