@@ -1,4 +1,4 @@
-import React, { ReactNode, useCallback, useMemo, useState } from "react";
+import { ReactNode, useCallback, useMemo, useState } from "react";
 import { Translation } from "../interfaces/translation";
 import { setStoredLanguage } from "../utils/set-stored-language";
 import { I18nContext } from "../context/i18n-context";
@@ -35,7 +35,7 @@ export const I18nProvider = ({
   const t: Translator = useCallback(
     (key, variables) => {
       const keys = key.toString().split(".");
-      let value: any = translations[language];
+      let value = translations[language];
 
       if (
         typeof value === "number" ||
@@ -48,7 +48,9 @@ export const I18nProvider = ({
       }
 
       for (const currentKey of keys) {
-        const currentValue = value[currentKey];
+        const currentValue: string | number | boolean | Translation = (
+          value as Translation
+        )[currentKey];
         if (!value || !isDefined(currentValue))
           throw new Error(`The key provided "${keys}" is incorrect`);
         value = currentValue;
