@@ -1,7 +1,8 @@
 {
   "name": "react-i18n-thin",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.1",
+  "description": "Lightweight version of i18n for react",
   "type": "module",
   "files": [
     "dist"
@@ -16,6 +17,20 @@
     }
   },
   "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/David200197/react-i18n-thin.git"
+  },
+  "keywords": [
+    "i18n",
+    "react"
+  ],
+  "author": "David200197",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/David200197/react-i18n-thin/issues"
+  },
+  "homepage": "https://github.com/David200197/react-i18n-thin#readme",
   "scripts": {
     "dev": "vite",
     "prebuild": "if exist dist rmdir /s /q dist",
