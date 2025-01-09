@@ -237,4 +237,30 @@ describe("I18n Test", () => {
       `The value of a key "object" cannot be an object or array`
     );
   });
+  test(`should be return correct array data`, async () => {
+    const TestBed = () => {
+      const { t } = useTranslation();
+
+      return (
+        <>
+          <p>{t("array1.0")}</p>
+          <p>{t("array2.0.example")}</p>
+        </>
+      );
+    };
+
+    const en = {
+      array1: ["foo"],
+      array2: [{ example: "example" }],
+    };
+
+    const screen = render(
+      <I18nProvider defaultLanguage="en" translations={{ en }}>
+        <TestBed />
+      </I18nProvider>
+    );
+
+    expect(screen.getByText("foo")).toBeDefined();
+    expect(screen.getByText("example")).toBeDefined();
+  });
 });

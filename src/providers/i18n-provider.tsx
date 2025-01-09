@@ -1,5 +1,5 @@
 import { ReactNode, useCallback, useMemo, useState } from "react";
-import { Translation } from "../interfaces/translation";
+import { Translation, TranslationValue } from "../interfaces/translation";
 import { setStoredLanguage } from "../utils/set-stored-language";
 import { I18nContext } from "../context/i18n-context";
 import { getLanguage } from "../utils/get-language";
@@ -48,9 +48,9 @@ export const I18nProvider = ({
       }
 
       for (const currentKey of keys) {
-        const currentValue: string | number | boolean | Translation = (
-          value as Translation
-        )[currentKey];
+        const currentValue: TranslationValue = (value as Translation)[
+          currentKey
+        ];
         if (!value || !isDefined(currentValue))
           throw new Error(`The key provided "${keys}" is incorrect`);
         value = currentValue;
